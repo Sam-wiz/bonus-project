@@ -3,320 +3,420 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;500;600;700&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Merriweather", sans-serif;
-}
-
-body {
-  display: flex;
-  padding: 0 10px;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background: black;
-}
-
-::selection {
-  color: #fff;
-  background: deepskyblue;
-}
-
-.wrapper {
-  width: 770px;
-  padding: 35px;
-  background: #0f172a;
-  color: #f1f5f9;
-  border-radius: 10px;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
-}
-
-.wrapper .input-field {
-  opacity: 0;
-  z-index: -999;
-  position: absolute;
-}
-
-.wrapper .content-box {
-  padding: 13px 20px 0;
-  border-radius: 10px;
-  border: 1px solid #bfbfbf;
-}
-
-.content-box .typing-text {
-  overflow: hidden;
-  max-height: 256px;
-}
-
-.typing-text::-webkit-scrollbar {
-  width: 0;
-}
-
-.typing-text p {
-  font-size: 25px;
-  text-align: justify;
-  letter-spacing: 1px;
-}
-
-.typing-text p span {
-  position: relative;
-}
-
-.typing-text p span.correct {
-  color: lawngreen;
-}
-
-.typing-text p span.incorrect {
-  color: #cb3439;
-  outline: 1px solid #fff;
-  background: #ffc0cb;
-  border-radius: 4px;
-}
-
-.typing-text p span.active {
-  color: deepskyblue;
-}
-
-.typing-text p span.active::before {
-  position: absolute;
-  content: "";
-  height: 2px;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  opacity: 0;
-  border-radius: 5px;
-  background: deepskyblue;
-  animation: blink 1s ease-in-out infinite;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 1;
-  }
-}
-
-.content-box .content {
-  margin-top: 17px;
-  display: flex;
-  padding: 12px 0;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid #bfbfbf;
-  line-break: auto;
-}
-
-.content button {
-  outline: none;
-  border: none;
-  width: 105px;
-  color: #fff;
-  padding: 8px 0;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-  background: deepskyblue;
-  transition: transform 0.3s ease;
-}
-
-.content button:active {
-  transform: scale(0.97);
-}
-
-.content .result-details {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  width: calc(100% - 140px);
-  justify-content: space-between;
-}
-
-.result-details li {
-  display: flex;
-  height: 20px;
-  list-style: none;
-  position: relative;
-  align-items: center;
-}
-
-.result-details li:not(:first-child) {
-  padding-left: 22px;
-  border-left: 1px solid #bfbfbf;
-}
-
-.result-details li p {
-  font-size: 19px;
-}
-
-.result-details li span {
-  display: block;
-  font-size: 20px;
-  margin-left: 10px;
-}
-
-li span b {
-  font-weight: 500;
-}
-
-li:not(:first-child) span {
-  font-weight: 500;
-}
-
-.errors span {
-  color: #facc15;
-}
-
-.timeLeft span {
-  color: #cb3439;
-}
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Revolution&family=Protest+Riot&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="typer.png">
+    <title>Typing-Speed-Test</title>
 </head>
+<style>
+    *
+    {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body
+    {
+        font-family: "Protest Revolution", sans-serif;
+        font-weight: 400;
+        background-color: rgb(14,17,23);
+        color: white;
+    }
+    .title, .sub-title
+    {
+        text-align: center;
+    }
+    .title
+    {
+        padding: 2%;
+        font-size: 7vh;
+    }
+    .sub-title
+    {
+        font-family: "Protest Riot", sans-serif;
+        font-size: 3vh;
+        padding-bottom: 2%;
+    }
+    hr
+    {
+        margin-bottom: 0;
+    }
+    .main-body 
+    {
+        display: flex;
+        padding: 0 10px;
+        align-items: center;
+        justify-content: center;
+        min-height: 80vh;
+    }
+
+    ::selection 
+    {
+        color: #fff;
+        background: deepskyblue;
+    }
+
+    .wrapper 
+    {
+        font-family: "Poppins", sans-serif;
+        margin-top: 0;
+        width: 75%;
+        padding: 3.5%;
+        background: #0a033e;
+        color: #f1f5f9;
+        border-radius: 10px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .wrapper .input-field 
+    {
+        
+        opacity: 0;
+        z-index: -999;
+        position: absolute;
+    }
+
+    .wrapper .content-box 
+    {
+        padding: 2% 2.5% 0;
+        border-radius: 10px;
+        border: 1px solid #bfbfbf;
+    }
+
+    .content-box .typing-text 
+    {
+        overflow: hidden;
+        max-height: 256px;
+    }
+    .typing-text::-webkit-scrollbar 
+    {
+        width: 0;
+    }
+    .typing-text p 
+    {
+        font-size: 23px;
+        text-align: justify;
+        letter-spacing: 0.9px;
+    }
+
+    .typing-text p span 
+    {
+        position: relative;
+    }
+
+    .typing-text p span.correct 
+    {
+        color: rgb(34, 209, 37);
+    }
+
+    .typing-text p span.incorrect 
+    {
+        color: #cb3439;
+        outline: 1px solid #fff;
+        background: #ffc0cb;
+        border-radius: 4px;
+    }
+
+    .typing-text p span.active 
+    {
+        color: rgb(234, 255, 96);
+    }
+
+    .typing-text p span.active::before 
+    {
+        position: absolute;
+        content: "";
+        height: 2px;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        border-radius: 5px;
+        background: rgb(229, 255, 112);
+        animation: blink 1s ease-in-out infinite;
+    }
+
+    @keyframes blink 
+    {
+        50% 
+        {
+            opacity: 1;
+        }
+    }
+
+    .content-box .content 
+    {
+        margin-top: 2%;
+        display: flex;
+        padding: 2.5% 0;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid #bfbfbf;
+        line-break: auto;
+    }
+
+    .content button 
+        {
+        outline: none;
+        border: none;
+        width: 105px;
+        color: #1d1b1b;
+        padding: 8px 0;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        background: rgb(230, 255, 90);
+        transition: transform 0.3s ease;
+    }
+
+    .content button:active 
+    {
+        transform: scale(0.97);
+    }
+
+    .content .result-details 
+    {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        width: calc(100% - 140px);
+        justify-content: space-between;
+    }
+
+    .result-details li 
+    {
+        display: flex;
+        height: 20px;
+        list-style: none;
+        position: relative;
+        align-items: center;
+    }
+
+    .result-details li:not(:first-child) 
+    {
+        padding-left: 22px;
+        border-left: 1px solid #bfbfbf;
+    }
+
+    .result-details li p 
+    {
+        font-size: 19px;
+    }
+
+    .result-details li span 
+    {
+        display: block;
+        font-size: 20px;
+        margin-left: 10px;
+    }
+
+    li span b 
+    {
+        font-weight: 500;
+    }
+    li:not(:first-child) span 
+    {
+        font-weight: 500;
+    }
+    .errors span 
+    {
+        color: #facc15;
+    }
+    .timeLeft span 
+    {
+        color: #cb3439;
+    }
+</style>
 <body>
     <div>
-        <div class="Head">
-            <h1 style="color: white;" id="heading">Typing-Speed-Test</h1>
-        </div>
-        <hr>
+        <h1 class="title">Can you beat me?</h1>
+        <p class="sub-title">(A simple project to demostrate JS elements - Samrudh)</p>
     </div>
-    <div class="wrapper">
-        <input type="text" class="input-field" autocomplete="off">
-        <div class="content-box">
-            <div class="typing-text">
-                <p></p>
-            </div>
-            <div class="content">
-                <ul class="result-details">
-                    <li class="timeLeft">
-                        <p>time Left:</p>
-                        <span><b>60</b>s</span>
-                    </li>
-                    <li class="errors">
-                        <p>Errors:</p>
-                        <span>0</span>
-                    </li>
-                    <li class="wpm">
-                        <p>WPM:</p>
-                        <span>0</span>
-                    </li>
-                    <li class="cpm">
-                        <p>CPM:</p>
-                        <span>0</span>
-                    </li>
-                </ul>
-                <button>Test Again</button>
+    <hr>
+    <div class="main-body">
+        <div class="wrapper">
+            <input type="text" class="input-field" autocomplete="off">
+            <div class="content-box">
+                <div class="typing-text">
+                    <p></p>
+                </div>
+                <div class="content">
+                    <ul class="result-details">
+                        <li class="timeLeft">
+                            <p>time Left:</p>
+                            <span><b>60</b>s</span>
+                        </li>
+                        <li class="errors">
+                            <p>Errors:</p>
+                            <span>0</span>
+                        </li>
+                        <li class="wpm">
+                            <p>WPM:</p>
+                            <span>0</span>
+                        </li>
+                        <li class="cpm">
+                            <p>CPM:</p>
+                            <span>0</span>
+                        </li>
+                        <li class="highest-wpm"> 
+                            <p>Highest WPM:</p>
+                            <span id="highestWPM">0</span>
+                        </li>
+                    </ul>
+                    <button>Try Again</button>
+                </div>
             </div>
         </div>
-    </div>
+    </div>    
     <script>
-        const paragraphs = [
-    "One dollar and eighty-seven cents. That was all. And sixty cents of it was in pennies. Pennies saved one and two at a time by bulldozing the grocer and the vegetable man and the butcher until one’s cheeks burned with the silent imputation of parsimony that such close dealing implied. One dollar and eighty-seven cents. And the next day would be Christmas...",
-    "There was a leak in the boat. Nobody had yet noticed it, and nobody would for the next couple of hours. This was a problem since the boat was heading out to sea and while the leak was quite small at the moment, it would be much larger when it was ultimately discovered. John had planned it exactly this way.",
-    "The paper was blank. It shouldn't have been. There should have been writing on the paper, at least a paragraph if not more. The fact that the writing wasn't there was frustrating. Actually, it was even more than frustrating. It was downright distressing.", "The coin hovered in the air, spinning over and over again. It reached its peak and began to descend. Both boys were pleading with it to land a certain way but the coin had already made up its mind on what it was going to do.",
-    "I'll talk to you tomorrow in more detail at our meeting, but I think I've found a solution to our problem. It's not exactly legal, but it won't land us in jail for the rest of our lives either. Are you willing to take the chance? Monroe asked his partner over the phone.",
-    "There was a time when he would have embraced the change that was coming. In his youth, he sought adventure and the unknown, but that had been years ago. He wished he could go back and learn to find the excitement that came with change but it was useless. That curiosity had long left him to where he had come to loathe anything that put him out of his comfort zone."
-];
-document.querySelectorAll('input').forEach(input => {
-  input.autocomplete = 'off';
-});
+        const paragraphs = 
+        [
+            "The sun dipped below the horizon, casting a warm orange glow across the sky. As evening settled in, the cool breeze whispered through the trees, rustling their leaves gently. A sense of tranquility enveloped the landscape, bringing peace to the weary souls. In the distance, a lone bird soared gracefully, its silhouette against the fading light. It was a moment of quiet beauty, a pause in the rush of life.",
+            "The old bookstore stood at the corner of the street, its weathered facade holding tales of centuries past. Inside, the scent of old paper mingled with the faint aroma of coffee, creating an atmosphere of nostalgia. Rows of dusty shelves stretched into the dimly lit space, each holding treasures waiting to be discovered. As I ran my fingers along the spines of forgotten volumes, I felt a sense of connection to the stories within.",
+            "In the heart of the city, amidst the hustle and bustle of daily life, there was a hidden oasis of calm. A secret garden, tucked away from prying eyes, where time seemed to stand still. Lush greenery surrounded me as I stepped through the wrought iron gate, leaving the chaos of the outside world behind. The sound of water trickling from a nearby fountain filled the air, soothing my frayed nerves. Here, in this sanctuary, I found solace.",
+            "The rain fell softly, like tears from the heavens, as I walked along the deserted street. Each droplet seemed to carry a message, whispered secrets of the past and hopes for the future. I tilted my head back, letting the cool water wash over my face, cleansing away the worries of the day. In that moment, I felt alive, connected to the world around me in ways I couldn't explain.",
+            "As the train rattled along the tracks, I gazed out the window at the passing scenery. Fields of gold stretched to the horizon, bathed in the warm light of the setting sun. In the distance, mountains rose majestically, their peaks shrouded in mist. It was a scene straight out of a painting, a masterpiece crafted by nature herself. I felt a sense of awe wash over me, humbled by the beauty of the world.",
+            "The laughter of children echoed through the air as they played in the park, their joy contagious. I watched from a bench nearby, a smile tugging at the corners of my lips. There was something magical about the innocence of youth, something pure and untainted by the world. As I closed my eyes and listened to the sounds of happiness, I felt a sense of hope stir within me. Perhaps, in their laughter, lay the key to a brighter tomorrow.",
+            "The city skyline glittered in the darkness, a beacon of light amidst the shadows. From my vantage point on the rooftop, I could see the entire metropolis spread out before me, a tapestry of dreams and aspirations. Each twinkling light represented a life, a story waiting to be told. As I breathed in the cool night air, I felt a sense of freedom wash over me, as if anything were possible.",
+            "The waves crashed against the shore, their rhythm soothing in its predictability. I walked barefoot along the sand, feeling the grains shift beneath my feet with each step. Seagulls cried overhead, their calls mingling with the sound of the surf. In that moment, I felt a sense of belonging, as if I were a part of something greater than myself. The ocean stretched out before me, vast and endless, a reminder of the infinite possibilities that lay ahead.",
+            "The forest whispered secrets as I wandered through its depths, the trees bending and swaying in the breeze. Sunlight filtered through the canopy above, dappling the forest floor with golden hues. I inhaled deeply, the scent of pine and earth filling my lungs with each breath. It was a place of magic, where the ordinary became extraordinary, and every leaf held a story.",
+            "The fire crackled merrily in the hearth, casting a warm glow throughout the room. Shadows danced on the walls, flickering and shifting with the flames. Outside, the world was dark and cold, but inside, there was only warmth and light. I curled up in my favorite chair, a book in hand, losing myself in its pages as the night stretched on.",
+            "The stars twinkled overhead, their brilliance lighting up the night sky. I lay on my back in the grass, tracing constellations with my finger as I marveled at the vastness of the universe. It was a humbling experience, to be reminded of how small we are in the grand scheme of things. Yet, at the same time, it was comforting to know that we are all connected, bound together by the same celestial thread.",
+            "The scent of freshly baked bread wafted through the air, tantalizing my senses and stirring memories of home. I followed my nose to a quaint little bakery tucked away on a side street, its windows fogged with warmth. As I stepped inside, I was greeted by the sight of shelves lined with loaves of bread in every shape and size. The baker smiled as I approached, offering me a sample of his finest creation. It was heaven on a plate, and I savored every bite.",
+            "The road stretched out before me, winding its way through valleys and over hills, beckoning me onward. With each mile traveled, I felt a sense of freedom wash over me, as if I were leaving my worries behind with every passing landmark. The wind whipped through my hair, carrying with it the promise of adventure. I smiled as I pressed down on the accelerator, eager to see where the road would take me next.",
+            "The city at night was a symphony of lights and sounds, a cacophony of life and energy. I walked through its streets, lost in the crowd yet somehow feeling more alive than ever. Neon signs flashed overhead, casting colorful reflections on the pavement below. Music spilled out from open doorways, mingling with the chatter of passersby. It was a scene straight out of a movie, and I was the star of my own story.",
+            "The first snowfall of the season blanketed the world in white, transforming familiar landscapes into scenes of ethereal beauty. I stood at the window, watching as delicate flakes drifted lazily to the ground, each one a tiny miracle in its own right. I bundled up in my warmest coat and ventured outside, reveling in the silence that accompanied the snow. It was a moment of pure serenity, a pause in the chaos of life.",
+            "The aroma of coffee filled the air as I stepped into the cozy cafe, the sound of chatter and laughter washing over me like a warm embrace. I settled into a corner booth, savoring the familiar comforts of my favorite haunt. The barista greeted me with a smile, already preparing my usual order without needing to ask. As I sipped my steaming cup of joe, I felt a sense of peace settle over me, as if I had finally found my place in the world.",
+            "The sound of laughter echoed through the halls of the old mansion, a stark contrast to its gloomy exterior. I had been drawn to the abandoned building out of curiosity, but what I found inside was unexpected. A group of friends had gathered for a night of revelry, their spirits high as they explored the hidden corners of the house. As I joined in their festivities, I felt a sense of belonging that I hadn't felt in years.",
+            "The train rattled along the tracks, its rhythmic motion lulling me into a state of relaxation. I gazed out the window at the passing scenery, lost in thought as the world sped by. Each town we passed through held its own story, its own secrets waiting to be discovered. I closed my eyes and let the steady hum of the train carry me away, content to be a passenger on this journey through life.",
+            "The sun rose over the horizon, painting the sky in shades of pink and gold. I stood on the beach, watching as the first light of dawn illuminated the world around me. The waves crashed against the shore, their rhythm a comforting constant in a world filled with uncertainty. As I breathed in the salty sea air, I felt a sense of peace wash over me, as if the universe were whispering that everything would be okay.",
+            "The scent of lavender filled the air as I wandered through the fields, the purple blooms stretching out as far as the eye could see. Bees buzzed lazily from flower to flower, their wings creating a soothing hum that echoed in the stillness. I closed my eyes and let the gentle breeze caress my skin, inhaling deeply and letting the fragrance envelop me. It was a moment of pure bliss, a fleeting glimpse of paradise.",
+            "The old man sat on the park bench, feeding breadcrumbs to the pigeons that gathered at his feet. He smiled as they cooed and fluttered around him, their feathers ruffling in the breeze. I watched from a distance, captivated by the simple joy he found in their company. In that moment, I realized that happiness could be found in the most unexpected places, if only we took the time to look.",
+            "The sound of music filled the air as I stepped into the grand concert hall, the notes swirling around me like a symphony of sound. The orchestra played with passion and precision, each musician lost in their own world yet somehow connected to the whole. As I closed my eyes and let the music wash over me, I felt a sense of transcendence, as if I were part of something greater than myself.",
+            "The smell of rain lingered in the air as I walked through the city streets, the pavement still slick from the passing storm. I tilted my face up to the sky, letting the cool drops patter against my skin as I reveled in the sensation. Around me, people hurried past with umbrellas held high, their faces turned down against the wet. But for me, the rain was a gift, a reminder of nature's beauty in all its forms.",
+            "The castle loomed overhead, its towering spires reaching for the heavens. I stood at the gates, gazing up at the ancient stone walls with a sense of wonder. Centuries of history were etched into every crack and crevice, each stone bearing witness to the passage of time. As I crossed the threshold into the courtyard, I felt a chill run down my spine, as if the spirits of the past were watching me with unseen eyes.",
+            "The sound of laughter drifted through the open window, drawing me out into the warm summer night. I followed the sound to a nearby park, where a group of friends had gathered around a crackling bonfire. They welcomed me with open arms, passing around marshmallows and swapping stories late into the night. As the flames danced in the darkness, I felt a sense of belonging wash over me, as if I had finally found my tribe.",
+            "The scent of pine filled the air as I hiked through the forest, the crunch of leaves beneath my feet a comforting rhythm. Sunlight filtered through the canopy above, casting dappled shadows on the forest floor. Birds sang in the treetops, their melodies blending with the rustle of leaves in the breeze. It was a scene of pure tranquility, a sanctuary in the midst of chaos.",
+            "The moon hung low in the sky, casting a silvery glow over the landscape below. I stood on the edge of the cliff, looking out at the world spread out before me like a canvas waiting to be painted. Stars twinkled overhead, their light reflected in the still waters of the lake below. In that moment, I felt a sense of peace wash over me, as if the universe were whispering that everything was exactly as it should be."
+        ];
+        const typingText = document.querySelector(".typing-text p"),
+        inpField = document.querySelector(".wrapper .input-field"),
+        tryAgainBtn = document.querySelector(".content button"),
+        timeTag = document.querySelector(".timeLeft span b"),
+        errorTag = document.querySelector(".errors span"),
+        wpmTag = document.querySelector(".wpm span"),
+        cpmTag = document.querySelector(".cpm span");
 
-const typingText = document.querySelector(".typing-text p"),
-    inpField = document.querySelector(".wrapper .input-field"),
-    tryAgainBtn = document.querySelector(".content button"),
-    timeTag = document.querySelector(".timeLeft span b"),
-    errorTag = document.querySelector(".errors span"),
-    wpmTag = document.querySelector(".wpm span"),
-    cpmTag = document.querySelector(".cpm span");
+        let timer,
+        maxTime = 60,
+        timeLeft = maxTime,
+        charIndex = errors = isTyping = 0;
 
-let timer,
-    maxTime = 60,
-    timeLeft = maxTime,
-    charIndex = errors = isTyping = 0;
+    function loadParagraph() 
+    {
+        const ranIndex = Math.floor(Math.random() * paragraphs.length);
+        typingText.innerHTML = "";
+        paragraphs[ranIndex].split("").forEach(char => {
+            let span = `<span>${char}</span>`
+            typingText.innerHTML += span;
+        });
+        typingText.querySelectorAll("span")[0].classList.add("active");
+        document.addEventListener("keydown", () => inpField.focus());
+        typingText.addEventListener("click", () => inpField.focus());
+    }
 
-function loadParagraph() {
-    const ranIndex = Math.floor(Math.random() * paragraphs.length);
-    typingText.innerHTML = "";
-    paragraphs[ranIndex].split("").forEach(char => {
-        let span = `<span>${char}</span>`
-        typingText.innerHTML += span;
-    });
-    typingText.querySelectorAll("span")[0].classList.add("active");
-    document.addEventListener("keydown", () => inpField.focus());
-    typingText.addEventListener("click", () => inpField.focus());
-}
-
-function initTyping() {
-    let characters = typingText.querySelectorAll("span");
-    let typedChar = inpField.value.split("")[charIndex];
-    if (charIndex < characters.length - 1 && timeLeft > 0) {
-        if (!isTyping) {
-            timer = setInterval(initTimer, 1000);
-            isTyping = true;
-        }
-        if (typedChar == null) {
-            if (charIndex > 0) {
-                charIndex--;
-                if (characters[charIndex].classList.contains("incorrect")) {
-                    errors--;
+    function initTyping() 
+    {
+        let characters = typingText.querySelectorAll("span");
+        let typedChar = inpField.value.split("")[charIndex];
+        if (charIndex < characters.length - 1 && timeLeft > 0) {
+            if (!isTyping) {
+                timer = setInterval(initTimer, 1000);
+                isTyping = true;
+            }
+            if (typedChar == null) {
+                if (charIndex > 0) {
+                    charIndex--;
+                    if (characters[charIndex].classList.contains("incorrect")) {
+                        errors--;
+                    }
+                    characters[charIndex].classList.remove("correct", "incorrect");
                 }
-                characters[charIndex].classList.remove("correct", "incorrect");
-            }
-        } else {
-            if (characters[charIndex].innerText == typedChar) {
-                characters[charIndex].classList.add("correct");
             } else {
-                errors++;
-                characters[charIndex].classList.add("incorrect");
+                if (characters[charIndex].innerText == typedChar) {
+                    characters[charIndex].classList.add("correct");
+                } else {
+                    errors++;
+                    characters[charIndex].classList.add("incorrect");
+                }
+                charIndex++;
             }
-            charIndex++;
+            characters.forEach(span => span.classList.remove("active"));
+            characters[charIndex].classList.add("active");
+
+            let wpm = Math.round(((charIndex - errors) / 5) / (maxTime - timeLeft) * 60);
+            wpm = wpm < 0 || !wpm || wpm === Infinity ? 0 : wpm;
+
+            wpmTag.innerText = wpm;
+            errorTag.innerText = errors;
+            cpmTag.innerText = charIndex - errors;
+        } else {
+            clearInterval(timer);
+            inpField.value = "";
+            const highestWPM = localStorage.getItem("highestWPM");
+            if (highestWPM === null || parseInt(wpmTag.innerText) > parseInt(highestWPM)) {
+                try {
+                    localStorage.setItem("highestWPM", wpmTag.innerText);
+                } catch (e) {
+                    console.error("Error saving to localStorage", e);
+                }
+            }
         }
-        characters.forEach(span => span.classList.remove("active"));
-        characters[charIndex].classList.add("active");
+    }
 
-        let wpm = Math.round(((charIndex - errors) / 5) / (maxTime - timeLeft) * 60);
-        wpm = wpm < 0 || !wpm || wpm === Infinity ? 0 : wpm;
+    function initTimer() 
+    {
+        if (timeLeft > 0) {
+            timeLeft--;
+            timeTag.innerText = timeLeft;
+            let wpm = Math.round(((charIndex - errors) / 5) / (maxTime - timeLeft) * 60);
+            wpmTag.innerText = wpm;
+        } else {
+            clearInterval(timer);
+        }
+    }
 
-        wpmTag.innerText = wpm;
-        errorTag.innerText = errors;
-        cpmTag.innerText = charIndex - errors;
-    } else {
+    function resetTest() 
+    {
+        loadParagraph();
         clearInterval(timer);
+        timeLeft = maxTime;
+        charIndex = errors = isTyping = 0;
         inpField.value = "";
-    }
-}
-
-function initTimer() {
-    if (timeLeft > 0) {
-        timeLeft--;
         timeTag.innerText = timeLeft;
-        let wpm = Math.round(((charIndex - errors) / 5) / (maxTime - timeLeft) * 60);
-        wpmTag.innerText = wpm;
-    } else {
-        clearInterval(timer);
+        wpmTag.innerText = 0;
+        errorTag.innerText = 0;
+        cpmTag.innerText = 0;
     }
-}
-
-function resetTest() {
     loadParagraph();
-    clearInterval(timer);
-    timeLeft = maxTime;
-    charIndex = errors = isTyping = 0;
-    inpField.value = "";
-    timeTag.innerText = timeLeft;
-    wpmTag.innerText = 0;
-    errorTag.innerText = 0o3;
-    cpmTag.innerText = 0;
+    inpField.addEventListener("input", initTyping);
+    tryAgainBtn.addEventListener("click", resetTest);
+try {
+    const highestWPM = localStorage.getItem("highestWPM");
+    console.log("Highest WPM from localStorage:", highestWPM); 
+    if (highestWPM !== null) 
+    {
+        const highestWPMDisplay = document.getElementById("highestWPM");
+        console.log("DOM Element found:", highestWPMDisplay); 
+        highestWPMDisplay.innerText = highestWPM;
+    }
+} catch (e) {
+    console.error("Error reading from localStorage", e);
 }
-
-loadParagraph();
-inpField.addEventListener("input", initTyping);
-tryAgainBtn.addEventListener("click", resetTest);
     </script>
 </body>
 </html>
